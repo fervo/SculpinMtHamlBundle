@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="sculpin_mthaml.environment" class="MtHaml\Environment">
+            <argument>php</argument>
+            <argument type="collection">
+                <argument key="enable_escaper">true</argument>
+            </argument>
+            <argument type="collection">
+                <argument key="markdown" type="service" id="sculpin_mthaml.filter.markdown" />
+            </argument>
+        </service>
+
+        <service id="sculpin_mthaml.converter" class="Fervo\Sculpin\Bundle\MtHamlBundle\MtHamlConverter">
+            <argument type="service" id="sculpin_mthaml.environment" />
+            <tag name="sculpin.converter" alias="mthaml" />
+            <tag name="sculpin.custom_mime_extensions" type="text/haml" parameter="sculpin_mthaml.extensions" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="sculpin_mthaml.filter.markdown" class="MtHaml\Filter\Markdown\MichelfMarkdown">
+            <argument type="service" id="sculpin_markdown.parser" />
+        </service>
+
+    </services>
+
+</container>

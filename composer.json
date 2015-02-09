@@ -1,0 +1,27 @@
+{
+    "name": "fervo/sculpin-mthaml-bundle",
+    "type": "library",
+    "description": "Sculpin MtHaml Bundle",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fervo AB",
+            "email": "info@fervo.se",
+            "homepage": "http://fervo.se"
+        },
+        {
+            "name": "Magnus Nordlander",
+            "email": "magnus@fervo.se"
+        }
+    ],
+    "require": {
+        "php": "~5.4",
+        "mthaml/mthaml": "~1.7",
+        "sculpin/markdown-bundle": "~2.0",
+        "symfony/config": "~2.1"
+    },
+    "autoload": {
+        "psr-4": { "Fervo\\Sculpin\\Bundle\\MtHamlBundle": "" }
+    }
+}
