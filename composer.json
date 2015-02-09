@@ -19,6 +19,7 @@
         "php": "~5.4",
         "mthaml/mthaml": "~1.7",
         "sculpin/markdown-bundle": "~2.0",
+        "sculpin/twig-bundle": "~2.0",
         "symfony/config": "~2.1"
     },
     "autoload": {

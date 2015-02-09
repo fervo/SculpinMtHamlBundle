@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="sculpin_mthaml.environment" class="MtHaml\Environment">
+        <service id="sculpin_mthaml.environment.php" class="MtHaml\Environment">
             <argument>php</argument>
             <argument type="collection">
                 <argument key="enable_escaper">true</argument>
@@ -14,11 +14,25 @@
             </argument>
         </service>
 
+        <service id="sculpin_mthaml.environment.twig" class="MtHaml\Environment">
+            <argument>twig</argument>
+            <argument type="collection">
+                <argument key="enable_escaper">false</argument>
+            </argument>
+            <argument type="collection">
+                <argument key="markdown" type="service" id="sculpin_mthaml.filter.markdown" />
+            </argument>
+        </service>
+
         <service id="sculpin_mthaml.converter" class="Fervo\Sculpin\Bundle\MtHamlBundle\MtHamlConverter">
-            <argument type="service" id="sculpin_mthaml.environment" />
+            <argument type="service" id="sculpin_mthaml.environment.php" />
             <tag name="sculpin.converter" alias="mthaml" />
             <tag name="sculpin.custom_mime_extensions" type="text/haml" parameter="sculpin_mthaml.extensions" />
             <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="sculpin_mthaml.twig_extension" class="MtHaml\Support\Twig\Extension">
+            <tag name="twig.extension" />
         </service>
 
         <service id="sculpin_mthaml.filter.markdown" class="MtHaml\Filter\Markdown\MichelfMarkdown">

@@ -2,6 +2,7 @@
 
 namespace Fervo\Sculpin\Bundle\MtHamlBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -12,4 +13,12 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 class SculpinMtHamlBundle extends Bundle
 {
     const CONVERTER_NAME = 'mthaml';
+
+    /**
+     * {@inheritdoc}
+     */
+    public function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new DependencyInjection\Compiler\LayoutPass());
+    }
 }
