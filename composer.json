@@ -22,6 +22,6 @@
         "symfony/config": "~2.1"
     },
     "autoload": {
-        "psr-4": { "Fervo\\Sculpin\\Bundle\\MtHamlBundle": "" }
+        "psr-4": { "Fervo\\Sculpin\\Bundle\\MtHamlBundle\\": "" }
     }
 }
